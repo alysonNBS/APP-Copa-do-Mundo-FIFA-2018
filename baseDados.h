@@ -59,9 +59,6 @@ struct grupo Grupo[8] = { {'A'}, {'B'}, {'C'}, {'D'}, {'E'}, {'F'}, {'G'}, {'H'}
 void SETUP_GRUPOS(void)
 {
     int i, j;
-
-    for(i=0; i<8; i++)
-        Grupo[i].selecao = malloc( 4*sizeof(struct selecao*));
     
     for(i=0; i<8; i++)
         for(j=0; j<4; j++)
@@ -69,7 +66,15 @@ void SETUP_GRUPOS(void)
 
 }
 
-
+void SETUP_SELECOES(void)
+{
+    int i;
+    for(i=Russia; i<=Japao; i++)
+    {
+        Selecao[i].num_jogos = 0;
+        Selecao[i].jogo = malloc(3*sizeof(struct jogo *));
+    }
+}
 
 struct jogo Jogo[NUM_JOGOS];
 

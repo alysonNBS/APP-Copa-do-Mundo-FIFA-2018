@@ -10,7 +10,7 @@ typedef struct hora
 
 typedef struct jogo
 {
-    struct selecao **pais;
+    struct selecao *pais[2];
 
     int placar[2];
     int prorrogacao[2];
@@ -40,22 +40,22 @@ typedef struct selecao
 typedef struct grupo
 {
     char g;
-    struct selecao **selecao;
+    struct selecao *selecao[4];
 } Tgrupo;
 
 typedef struct oitava
 {
-    struct jogo **jogo;
+    struct jogo *jogo[8];
 } Toitava;
 
 typedef struct quarta
 {
-    struct jogo **jogo;
+    struct jogo *jogo[4];
 } Tquarta;
 
 typedef struct semi_final
 {
-    struct jogo **jogo;
+    struct jogo *jogo[2];
 } Tsemi_final;
 
 typedef struct final

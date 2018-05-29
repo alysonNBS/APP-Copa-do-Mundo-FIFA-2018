@@ -184,5 +184,6 @@ void print_grupo(struct grupo g)
 
 void imprimi_jogo(struct jogo j)
 {
-    return;
+    printf("OK\n");
+    printf("%s x %s\n", j.pais[0]->nome, j.pais[1]->nome);
 }

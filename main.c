@@ -10,12 +10,16 @@ void menu_principal(void);
 void menu_insercao(void);
 void menu_exibicao(void);
 
+
+
 int main()
 {
     SETUP_GRUPOS();
-    
-    menu_principal();
+    SETUP_SELECOES();
+    SETUP_JOGOS_FASE_GRUPO();
 
+
+    menu_principal();
 
 
     return 0;
