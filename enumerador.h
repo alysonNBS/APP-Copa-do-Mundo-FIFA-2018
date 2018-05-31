@@ -12,12 +12,12 @@ enum grupos
 
 enum selecoes
 {
-Russia=0, Arabia_Saudita, Egito, Uruguai,
-Portugal, Espanha, Marrocos, Ira,
-Franca, Australia, Peru, Dinamarca,
-Argentina, Islandia, Croacia, Nigeria,
-Brasil, Suica, Costa_Rica, Servia,
-Alemanha, Mexico, Suecia, Coreia_do_Sul,
-Belgica, Panama, Tunisia, Inglaterra,
-Polonia, Senegal, Colombia, Japao
+Arabia_Saudita=0, Egito, Russia, Uruguai,
+Espanha, Ira, Marrocos, Portugal,
+Australia, Dinamarca, Franca, Peru,
+Argentina, Croacia, Islandia, Nigeria,
+Brasil, Costa_Rica, Servia, Suica,
+Alemanha, Coreia_do_Sul, Mexico, Suecia,
+Belgica, Inglaterra, Panama, Tunisia,
+Colombia, Japao, Polonia, Senegal
 };

@@ -1,19 +1,16 @@
-#include "dados.h"
-#include <stdlib.h>
-
 #define NUM_JOGOS 48+8+4+2+2
 
 
 //selecoes participantes da copa
 struct selecao Selecao[32] = {
-{"Rússia"}, {"Arábia Saudita"}, {"Egito"}, {"Uruguai"},
-{"Portugal"}, {"Espanha"}, {"Marrocos"}, {"Irã"},
-{"França"}, {"Austrália"}, {"Peru"}, {"Dinamarca"},
-{"Argentina"}, {"Islândia"}, {"Croácia"}, {"Nigéria"},
-{"Brasil"}, {"Suíça"}, {"Costa Rica"}, {"Sérvia"},
-{"Alemanha"}, {"México"}, {"Suécia"}, {"Coreia do Sul"},
-{"Bélgica"}, {"Panamá"}, {"Tunísia"}, {"Inglaterra"},
-{"Polônia"}, {"Senegal"}, {"Colômbia"}, {"Japão"}
+{"Arábia Saudita"}, {"Egito"}, {"Rússia"}, {"Uruguai"},
+{"Espanha"}, {"Irã"}, {"Marrocos"}, {"Portugal"},
+{"Austrália"},  {"Dinamarca"}, {"França"}, {"Peru"},
+{"Argentina"}, {"Croácia"}, {"Islândia"}, {"Nigéria"},
+{"Brasil"}, {"Costa Rica"}, {"Sérvia"}, {"Suíça"},
+{"Alemanha"}, {"Coreia do Sul"}, {"México"}, {"Suécia"}, 
+{"Bélgica"}, {"Inglaterra"}, {"Panamá"}, {"Tunísia"},
+{"Colômbia"}, {"Japão"}, {"Polônia"}, {"Senegal"}
 };
 
 /*
@@ -69,7 +66,7 @@ void SETUP_GRUPOS(void)
 void SETUP_SELECOES(void)
 {
     int i;
-    for(i=Russia; i<=Japao; i++)
+    for(i=0; i<32; i++)
     {
         Selecao[i].num_jogos = 0;
         Selecao[i].jogo = malloc(3*sizeof(struct jogo *));
@@ -88,7 +85,7 @@ void insere_jogo(const int id, Tselecao *pais1, Tselecao *pais2, char *local, Td
     Jogo[id].tipo = tipo;
     
     Jogo[id].placar[0] = Jogo[id].placar[1] = Jogo[id].prorrogacao[0] =
-    Jogo[id].prorrogacao[1] = Jogo[id].penaltes[0] = Jogo[id].penaltes[1] = 0;
+    Jogo[id].prorrogacao[1] = Jogo[id].penaltes[0] = Jogo[id].penaltes[1] = -1;
 
 
     pais2->jogo[(pais2->num_jogos)++] = pais1->jogo[(pais1->num_jogos)++] = &Jogo[id];
@@ -96,6 +93,11 @@ void insere_jogo(const int id, Tselecao *pais1, Tselecao *pais2, char *local, Td
 
 void SETUP_JOGOS_FASE_GRUPO(void)
 {
-    insere_jogo(0, &Selecao[Russia], &Selecao[Egito], "SÃO PETERSBURGO", (Tdata) {2018, 06, 19}, (Thora) {15, 00} , faseDeGrupo);
+    insere_jogo(0, &Selecao[Russia], &Selecao[Arabia_Saudita], "OLÍMPICO LUJNIKI", (Tdata) {2018, 06, 14}, (Thora) {12, 00} , faseDeGrupo);
+    insere_jogo(1, &Selecao[Egito], &Selecao[Uruguai], "ECATERIMBURGO", (Tdata) {2018, 06, 15}, (Thora) {9, 00} , faseDeGrupo);
+    insere_jogo(2, &Selecao[Russia], &Selecao[Egito], "SÃO PETERSBURGO", (Tdata) {2018, 06, 19}, (Thora) {15, 00} , faseDeGrupo);
+    insere_jogo(3, &Selecao[Uruguai], &Selecao[Arabia_Saudita], "ROSTOV", (Tdata) {2018, 06, 20}, (Thora) {12, 00} , faseDeGrupo);
+    insere_jogo(0, &Selecao[Uruguai], &Selecao[Russia], "SAMARA", (Tdata) {2018, 06, 25}, (Thora) {11, 00} , faseDeGrupo);
+    insere_jogo(0, &Selecao[Arabia_Saudita], &Selecao[Egito], "VOLGOGRADO", (Tdata) {2018, 06, 25}, (Thora) {11, 00} , faseDeGrupo);
 
 }

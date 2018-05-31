@@ -33,9 +33,7 @@ void print_grupos(struct grupo *grupos)
 
 void print_grupo(struct grupo g)
 {
-    int colocacao=0, jogos=0, pontos=0, vitorias=0, empates=0, derrotas=0, saldo=0, gp=0, gc=0;
-    float aprov=100;
-    int i; 
+    int i;
 
     printf("GRUPO %c\n", g.g);
 
@@ -71,8 +69,6 @@ void print_grupo(struct grupo g)
     for(i=0; i<7; i++)
         printf("%c",196);
     printf("%c", 191);
-    
-    
     printf("\n");
     
 
@@ -81,8 +77,6 @@ void print_grupo(struct grupo g)
     for(i=0; i<51-14; i++)
         printf(" ");
     printf("%c P %c J %c V %c E %c D %c SG %c GP %c GC %c   %%   %c", 179, 179, 179, 179, 179, 179, 179, 179, 179, 179);
-
-
     printf("\n");
 
 
@@ -118,30 +112,46 @@ void print_grupo(struct grupo g)
     for(i=0; i<7; i++)
         printf("%c",196);
     printf("%c", 180);
-
-
     printf("\n");
 
 
 
-    //qsort(g, 4, sizeof(struct grupo), classificacao);
-
-
-
-    //selecoes
-    printf("%c %d  %-46s %c %d %c %d %c %d %c %d %c %d %c %2d %c %2d %c %2d %c %5.1f %c\n",
-        179, colocacao, "Brasil", 179, pontos, 179, jogos, 179, vitorias, 179, empates, 179, derrotas, 179,
-        saldo, 179, gp, 179, gc, 179, aprov, 179);
-    printf("%c %d  %-46s %c %d %c %d %c %d %c %d %c %d %c %2d %c %2d %c %2d %c %5.1f %c\n",
-        179, colocacao, "Brasil", 179, pontos, 179, jogos, 179, vitorias, 179, empates, 179, derrotas, 179,
-        saldo, 179, gp, 179, gc, 179, aprov, 179);
-    printf("%c %d  %-46s %c %d %c %d %c %d %c %d %c %d %c %2d %c %2d %c %2d %c %5.1f %c\n",
-        179, colocacao, "Brasil", 179, pontos, 179, jogos, 179, vitorias, 179, empates, 179, derrotas, 179,
-        saldo, 179, gp, 179, gc, 179, aprov, 179);
-    printf("%c %d  %-46s %c %d %c %d %c %d %c %d %c %d %c %2d %c %2d %c %2d %c %5.1f %c\n",
-        179, colocacao, "Brasil", 179, pontos, 179, jogos, 179, vitorias, 179, empates, 179, derrotas, 179,
-        saldo, 179, gp, 179, gc, 179, aprov, 179);
     
+    //selecoes
+    int colocacao=1, aux_colocacao=1;
+
+    //qsort(g.selecao, 4, sizeof(struct grupo), classificacao);
+
+
+    printf("%c %d  %-46s %c %d %c %d %c %d %c %d %c %d %c %2d %c %2d %c %2d %c %5.1f %c\n",
+        179, colocacao, g.selecao[0]->nome, 179, pontos(*g.selecao[0]), 179, jogos(*g.selecao[0]), 179,
+        vitorias(*g.selecao[0]), 179, empates(*g.selecao[0]), 179, derrotas(*g.selecao[0]), 179,
+        saldo(*g.selecao[0]), 179, gp(*g.selecao[0]), 179, gc(*g.selecao[0]), 179, 
+        ( jogos(*g.selecao[0]) ) ? 100.0 * pontos(*g.selecao[0])/(3*jogos(*g.selecao[0])) : 0.0, 179);
+    
+    for(i=1; i<4; i++)
+    {
+        //if( classificacao(g.selecao+i-1, g.selecao+i) != 0)
+        {
+            colocacao += aux_colocacao;
+            aux_colocacao = 0;
+        }
+
+
+        printf("%c %d  %-46s %c %d %c %d %c %d %c %d %c %d %c %2d %c %2d %c %2d %c %5.1f %c\n",
+            179, colocacao, g.selecao[i]->nome, 179, pontos(*g.selecao[i]), 179, jogos(*g.selecao[i]), 179,
+            vitorias(*g.selecao[i]), 179, empates(*g.selecao[i]), 179, derrotas(*g.selecao[i]), 179,
+            saldo(*g.selecao[i]), 179, gp(*g.selecao[i]), 179, gc(*g.selecao[i]), 179, 
+            ( jogos(*g.selecao[i]) ) ? 100.0 * pontos(*g.selecao[i])/(3*jogos(*g.selecao[i])) : 0.0, 179);
+
+
+        aux_colocacao++;
+    }
+
+    
+    //qsort(g.selecao, 4, sizeof(struct grupo), padrao);
+    
+
 
     //linha inferior
     printf("%c", 192);
@@ -175,8 +185,6 @@ void print_grupo(struct grupo g)
     for(i=0; i<7; i++)
         printf("%c",196);
     printf("%c", 217);
-    
-    
     printf("\n");
 }
 

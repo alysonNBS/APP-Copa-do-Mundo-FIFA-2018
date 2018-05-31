@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+#include "dados.h"
+#include "funcoes.h"
+#include "funcoesJogos.h"
 #include "enumerador.h"
 #include "baseDados.h"
+#include "funcoesFaseGrupo.h"
 #include "imprimi.h"
 
 
@@ -20,6 +25,7 @@ int main()
 
 
     menu_principal();
+
 
 
     return 0;
