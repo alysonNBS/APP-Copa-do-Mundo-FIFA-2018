@@ -5,8 +5,6 @@ void print_grupo(struct grupo g);
 void print_grupos(struct grupo *grupos);
 void logo_app(void);
 
-
-
 void logo_app(void)
 {
         printf("************************************\n");
@@ -188,9 +186,7 @@ void print_grupo(struct grupo g)
     printf("\n");
 }
 
-
-
-void imprimi_jogo(struct jogo j)
+void print_jogo(struct jogo j)
 {
     printf("OK\n");
     printf("%s x %s\n", j.pais[0]->nome, j.pais[1]->nome);

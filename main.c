@@ -19,8 +19,8 @@ void menu_exibicao(void);
 
 int main()
 {
-    SETUP_GRUPOS();
     SETUP_SELECOES();
+    SETUP_GRUPOS();
     SETUP_JOGOS_FASE_GRUPO();
 
 

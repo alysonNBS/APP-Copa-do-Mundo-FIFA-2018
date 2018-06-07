@@ -3,16 +3,30 @@
 
 //selecoes participantes da copa
 struct selecao Selecao[32] = {
-{"Arábia Saudita"}, {"Egito"}, {"Rússia"}, {"Uruguai"},
-{"Espanha"}, {"Irã"}, {"Marrocos"}, {"Portugal"},
-{"Austrália"},  {"Dinamarca"}, {"França"}, {"Peru"},
-{"Argentina"}, {"Croácia"}, {"Islândia"}, {"Nigéria"},
-{"Brasil"}, {"Costa Rica"}, {"Sérvia"}, {"Suíça"},
-{"Alemanha"}, {"Coreia do Sul"}, {"México"}, {"Suécia"}, 
-{"Bélgica"}, {"Inglaterra"}, {"Panamá"}, {"Tunísia"},
-{"Colômbia"}, {"Japão"}, {"Polônia"}, {"Senegal"}
+{"Arabia Saudita"}, {"Egito"}, {"Russia"}, {"Uruguai"},
+{"Espanha"}, {"Ira"}, {"Marrocos"}, {"Portugal"},
+{"Australia"},  {"Dinamarca"}, {"Franca"}, {"Peru"},
+{"Argentina"}, {"Croacia"}, {"Islandia"}, {"Nigeria"},
+{"Brasil"}, {"Costa Rica"}, {"Servia"}, {"Suica"},
+{"Alemanha"}, {"Coreia do Sul"}, {"Mexico"}, {"Suecia"}, 
+{"Belgica"}, {"Inglaterra"}, {"Panama"}, {"Tunisia"},
+{"Colombia"}, {"Japao"}, {"Polonia"}, {"Senegal"}
 };
 
+
+void corrige_acentos_nomes(void)
+{
+    int a_tio = 198, a_agudo = 160, a_circuflexo = 131, e_agudo = 130, i_agudo = 214, o_circuflexo = 147, u_agudo = 163, c_cedilha = 135;
+
+    Selecao[Panama].nome[5] = Selecao[Croacia].nome[3] = Selecao[Australia].nome[5] = Selecao[Arabia_Saudita].nome[2] = a_agudo;
+    Selecao[Russia].nome[1] = u_agudo;
+    Selecao[Japao].nome[3] = Selecao[Ira].nome[2] = a_tio;
+    Selecao[Suica].nome[3] = Selecao[Franca].nome[4] = c_cedilha;
+    Selecao[Islandia].nome[3] = a_circuflexo;
+    Selecao[Belgica].nome[1] = Selecao[Suecia].nome[2] = Selecao[Mexico].nome[1] = Selecao[Servia].nome[1] = Selecao[Nigeria].nome[3] = e_agudo;
+    Selecao[Tunisia].nome[3] = Selecao[Suica].nome[2] = i_agudo;
+    Selecao[Polonia].nome[2] = Selecao[Colombia].nome[3] = o_circuflexo;
+}
 /*
 struct selecao Russia = {"Rússia"};
 struct selecao Brasil = {"Brasil"};
@@ -71,6 +85,8 @@ void SETUP_SELECOES(void)
         Selecao[i].num_jogos = 0;
         Selecao[i].jogo = malloc(3*sizeof(struct jogo *));
     }
+
+    corrige_acentos_nomes();
 }
 
 struct jogo Jogo[NUM_JOGOS];
