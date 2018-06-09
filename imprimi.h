@@ -186,8 +186,47 @@ void print_grupo(struct grupo g)
     printf("\n");
 }
 
+
+
 void print_jogo(struct jogo j)
 {
     printf("OK\n");
     printf("%s x %s\n", j.pais[0]->nome, j.pais[1]->nome);
+}
+
+
+void time_oitava(int jogo, int time, char *nome)
+{
+    nome[0] = time + '1';
+    nome[1] = -8;
+    nome[2] = ' ';
+    nome[3] = (jogo/4 == 0) ? 2*jogo + time + 'A' : 2*(jogo % 4) - time +'B';
+    nome[4] = 0;
+}
+
+
+void print_oitavas(struct oitava *oitavas)
+{
+    int i, j;
+    
+    for(i=0; i<2; i++)
+    {
+        for(j=0; j<4; j++)
+        {
+            if( oitavas->jogo[4*i + j]->placar[0] == -1)
+            {
+                char pais1[50], pais2[50];
+                (oitavas->jogo[4*i + j]->pais[0]->nome != NULL) ? strcpy(pais1, oitavas->jogo[4*i + j]->pais[0]->nome)
+                : time_oitava(4*i + j, 0, pais1);
+                (oitavas->jogo[4*i + j]->pais[1]->nome != NULL) ? strcpy(pais2, oitavas->jogo[4*i + j]->pais[1]->nome)
+                : time_oitava(4*i + j, 1, pais2);
+
+
+                printf("%-40s X %40s\n", pais1, pais2);
+            }
+            else
+                printf("%-40s %-2d X %2d %40s\n", oitavas->jogo[4*i + j]->pais[0]->nome, oitavas->jogo[4*i + j]->placar[0],
+                        oitavas->jogo[4*i + j]->pais[1]->nome, oitavas->jogo[4*i + j]->placar[1]);
+        }
+    }
 }

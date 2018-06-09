@@ -23,7 +23,7 @@ typedef struct jogo
 
 typedef struct jogador
 {
-    unsigned char nome[100];
+    char nome[100];
     int num;
     int posicao;
 } Tjogador;
@@ -31,6 +31,7 @@ typedef struct jogador
 typedef struct selecao
 {
     char nome[50];
+    char sigla[4];
     int num_jogos;
     struct jogo **jogo;
     struct jogador jogador[23];

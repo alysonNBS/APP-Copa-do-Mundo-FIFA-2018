@@ -108,7 +108,6 @@ void menu_insercao(void)
             default:
                 printf("\nOp%c%co inv%clida! Tente novamente: ", 135, 198, 160);
                 goto leituraDeOpcao;
-                break;
             }
     } while(opcao != 0);
     
@@ -148,6 +147,12 @@ void menu_exibicao(void)
                 print_grupos(Grupo);
                 system("pause");
                 break;
+            
+            case 2:
+                system("cls");
+                print_oitavas(&Oitavas);
+                system("pause");
+                break;
 
             case 0:
                 break;
@@ -155,7 +160,6 @@ void menu_exibicao(void)
             default:
                 printf("\nOp%c%co inv%clida! Tente novamente: ", 135, 198, 160);
                 goto leituraDeOpcao;
-                break;
             }
     } while(opcao != 0);
     
