@@ -19,6 +19,7 @@ typedef struct jogo
     struct data data;
     struct hora hora;
     char tipo;
+    int id;
 } Tjogo;
 
 typedef struct jogador

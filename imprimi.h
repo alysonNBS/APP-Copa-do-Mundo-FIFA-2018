@@ -1,12 +1,26 @@
 #include <stdio.h>
 
 
-void print_grupo(struct grupo g);
 void print_grupos(struct grupo *grupos);
+void print_oitavas(struct oitava *oitavas);
+void print_quartas(struct quarta *quartas);
+void print_semi_finais(struct semi_final *semis);
+void print_final(struct final *final);
+void print_terc_lugar(struct terceiro_lugar *terc_lugar);
+void print_grupo(struct grupo g);
+void print_jogo(struct jogo j);
 void logo_app(void);
+void print_data(struct data d);
+void print_horario(struct hora h);
+void time_oitava(int jogo, int time, char *nome);
+void time_quarta(int jogo, int time, char *nome);
+void time_semi(int jogo, int time, char *nome);
+void time_final(int time, char *nome);
+void time_terceiro_lugar(int time, char *nome);
 
-void logo_app(void)
-{
+
+
+void logo_app(void) {
         printf("************************************\n");
         printf("*                                  *\n");
         printf("*     Copa do Mundo FIFA 2018      *\n");
@@ -17,8 +31,7 @@ void logo_app(void)
 
 
 
-void print_grupos(struct grupo *grupos)
-{
+void print_grupos(struct grupo *grupos) {
     int i;
     for(i=A; i<=H; i++)
     {
@@ -29,8 +42,7 @@ void print_grupos(struct grupo *grupos)
 
 
 
-void print_grupo(struct grupo g)
-{
+void print_grupo(struct grupo g) {
     int i;
 
     printf("GRUPO %c\n", g.g);
@@ -188,15 +200,91 @@ void print_grupo(struct grupo g)
 
 
 
-void print_jogo(struct jogo j)
-{
-    printf("OK\n");
-    printf("%s x %s\n", j.pais[0]->nome, j.pais[1]->nome);
+void print_jogo(struct jogo j) {
+    char pais1[50], pais2[50]; // variaveis auxiliares para impressao
+
+    print_data(j.data);
+    printf(" %s ", j.local);
+    print_horario(j.hora);
+    
+
+    if(j.placar[0] == -1) {
+        switch(j.tipo) {
+            case faseDeGrupo:
+                printf("\n\t %s     X     %s\n", j.pais[0]->sigla, j.pais[1]->sigla);
+                break;
+
+            case oitava:
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                : time_oitava(j.id-48, 0, pais1);
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                : time_oitava(j.id-48, 1, pais2);
+
+
+                printf("\n\t %s     X     %s\n", pais1, pais2);
+                break;
+
+            case quarta:
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                : time_quarta(j.id-56, 0, pais1);
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                : time_quarta(j.id-56, 1, pais2);
+
+
+                printf("\n%s     X     %s\n", pais1, pais2);
+                break;
+
+            case semi_final:
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                : time_semi(j.id-60, 0, pais1);
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                : time_semi(j.id-60, 1, pais2);
+
+
+                printf("\n%s     X     %s\n", pais1, pais2);
+                break;
+
+            case final:
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                : time_final(0, pais1);
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                : time_final(1, pais2);
+
+
+                printf("\n%s     X     %s\n", pais1, pais2);
+                break;
+
+            case terc_lugar:
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                : time_terceiro_lugar(0, pais1);
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                : time_terceiro_lugar(1, pais2);
+
+
+                printf("\n%s     X     %s\n", pais1, pais2);
+                break;
+        }
+    } else
+    {
+        printf("\n\t %s  %-3d X %3d  %s\n", j.pais[0]->sigla, j.placar[0], j.placar[1], j.pais[1]->sigla);
+    }
 }
 
 
-void time_oitava(int jogo, int time, char *nome)
-{
+
+void print_data(struct data d) {
+    printf("%02d/%02d/%02d", d.dia, d.mes, d.ano);
+}
+
+
+
+void print_horario(struct hora h) {
+    printf("%02d:%02d", h.hora, h.min);
+}
+
+
+
+void time_oitava(int jogo, int time, char *nome) {
     nome[0] = time + '1';
     nome[1] = -8;
     nome[2] = ' ';
@@ -205,28 +293,94 @@ void time_oitava(int jogo, int time, char *nome)
 }
 
 
+
+void time_quarta(int jogo, int time, char *nome) {
+    strcpy(nome, "Venc. Oita. ");
+    nome[12] = 2*jogo + time + '1';
+    nome[13] = 0;
+}
+
+
+
+void time_semi(int jogo, int time, char *nome) {
+    strcpy(nome, "Venc. Quar. ");
+    nome[12] = time + '1';
+    nome[13] = 0;
+}
+
+
+
+void time_final(int time, char *nome) {
+    strcpy(nome, "Venc. Semi. ");
+    nome[12] = time + '1';
+    nome[13] = 0;
+}
+
+
+
+void time_terceiro_lugar(int time, char *nome) {
+    strcpy(nome, "Perd. Semi. ");
+    nome[12] = time + '1';
+    nome[13] = 0;
+}
+
+
+
 void print_oitavas(struct oitava *oitavas)
 {
-    int i, j;
+    int i;
+    
+    for(i=0; i<8; i++)
+    {
+        printf("\n\t      Oitavas %d\n", i+1);
+        print_jogo(*oitavas->jogo[i]);
+        printf("\n");
+    }
+}
+
+
+
+void print_quartas(struct quarta *quartas)
+{
+    int i;
+    
+    for(i=0; i<4; i++)
+    {
+        printf("\n\t      Quartas %d\n", i+1);
+        print_jogo(*quartas->jogo[i]);
+        printf("\n");
+    }
+}
+
+
+
+void print_semi_finais(struct semi_final *semis)
+{
+    int i;
     
     for(i=0; i<2; i++)
     {
-        for(j=0; j<4; j++)
-        {
-            if( oitavas->jogo[4*i + j]->placar[0] == -1)
-            {
-                char pais1[50], pais2[50];
-                (oitavas->jogo[4*i + j]->pais[0]->nome != NULL) ? strcpy(pais1, oitavas->jogo[4*i + j]->pais[0]->nome)
-                : time_oitava(4*i + j, 0, pais1);
-                (oitavas->jogo[4*i + j]->pais[1]->nome != NULL) ? strcpy(pais2, oitavas->jogo[4*i + j]->pais[1]->nome)
-                : time_oitava(4*i + j, 1, pais2);
-
-
-                printf("%-40s X %40s\n", pais1, pais2);
-            }
-            else
-                printf("%-40s %-2d X %2d %40s\n", oitavas->jogo[4*i + j]->pais[0]->nome, oitavas->jogo[4*i + j]->placar[0],
-                        oitavas->jogo[4*i + j]->pais[1]->nome, oitavas->jogo[4*i + j]->placar[1]);
-        }
+        printf("\n\t     Semifinal %d\n", i+1);
+        print_jogo(*semis->jogo[i]);
+        printf("\n");
     }
+}
+
+
+
+void print_final(struct final *final)
+{
+        printf("\n\t\tFinal\n");
+        print_jogo(*final->jogo);
+        printf("\n");
+}
+
+
+
+void print_terc_lugar(struct terceiro_lugar *terc_lugar)
+{
+    
+        printf("\n\t    Terceiro Lugar\n");
+        print_jogo(*terc_lugar->jogo);
+        printf("\n");
 }

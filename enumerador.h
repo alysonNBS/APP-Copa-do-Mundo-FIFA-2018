@@ -1,7 +1,8 @@
 // a posicao que de um jogo no vetor de jogos da selecao eh dada pela sequencia abaixo
+// o jogo de final e terceiro lugar sao equivalentes
 enum tipo_jogo
 {
-    faseDeGrupo, oitava=3, quarta, semi_final, terceiro_lugar=6, final=6
+    faseDeGrupo, oitava, quarta, semi_final, terc_lugar, final
 };
 
 

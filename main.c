@@ -131,6 +131,7 @@ void menu_exibicao(void)
         printf("3 - Exibir Quartas\n");
         printf("4 - Exibir Semi-Final\n");
         printf("5 - Exibir Final\n");
+        printf("6 - Exibir Disputa de Terceiro Lugar\n");
         printf("0 - Retronar ao Menu Principal\n");
         printf("\n\n");
         printf("Escolha uma op%c%co: ", 135, 198);
@@ -151,6 +152,30 @@ void menu_exibicao(void)
             case 2:
                 system("cls");
                 print_oitavas(&Oitavas);
+                system("pause");
+                break;
+
+            case 3:
+                system("cls");
+                print_quartas(&Quartas);
+                system("pause");
+                break;
+
+            case 4:
+                system("cls");
+                print_semi_finais(&Semi_final);
+                system("pause");
+                break;
+
+            case 5:
+                system("cls");
+                print_final(&Final);
+                system("pause");
+                break;
+
+            case 6:
+                system("cls");
+                print_terc_lugar(&Terc_lugar);
                 system("pause");
                 break;
 
