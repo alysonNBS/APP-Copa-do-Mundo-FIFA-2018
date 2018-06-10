@@ -181,7 +181,6 @@ void SALVAR_JOGOS()
 {
     FILE *fp;
     int i, nulo=0;
-    //SALVA JOGOS COM TIME DEFINIDO
     fp = fopen("carga_jogos.arq", "wb");
     for (i = 0; i < 64; i++)
     {
@@ -193,7 +192,6 @@ void SALVAR_JOGOS()
                 fwrite(&nulo, sizeof(int), 1, fp);
             else
                 fwrite(&Jogo[i].pais[1]->id, sizeof(int), 1, fp);
-            
             fwrite(&(Jogo[i].placar), sizeof(Jogo[i].placar), 2, fp);
             fwrite(&(Jogo[i].prorrogacao), sizeof(Jogo[i].prorrogacao), 2, fp);
             fwrite(&(Jogo[i].penaltes), sizeof(Jogo[i].penaltes), 2, fp);
@@ -202,6 +200,9 @@ void SALVAR_JOGOS()
             fwrite(&(Jogo[i].hora), sizeof(Jogo[i].hora), 1, fp);
             fwrite(&(Jogo[i].tipo), sizeof(Jogo[i].tipo), 1, fp);
             fwrite(&(Jogo[i].id), sizeof(Jogo[i].id), 1, fp);
+            
+            // printf("\n\n%s  -  %s \n",Jogo[i].pais[0]->nome, Jogo[i].pais[1]->nome);
+            // system("PAUSE");
     }
     fclose(fp);
 }
@@ -216,23 +217,20 @@ void CARREGAR_JOGOS()
     int auxid;
     fp3 = fopen("carga_jogos.arq", "rb");
 
-    //CARREGA JOGOS COM TIMES DEFINIDOS
     for (i = 0; i < 64; i++)
     {
         Jogo[i].pais[0] = malloc(sizeof(struct selecao));
         fread(&auxid, sizeof(int), 1, fp3);
-        if (auxid == 0){
+        if (auxid == 0)
             Jogo[i].pais[0] = NULL;
-        }else{
-            Jogo[i].pais[0] = &Selecao[auxid];
-        }
+        else
+            Jogo[i].pais[0] = &Selecao[auxid-1];
         Jogo[i].pais[1] = malloc(sizeof(struct selecao));
         fread(&auxid, sizeof(int), 1, fp3);
-        if (auxid == 0){
+        if (auxid == 0)
             Jogo[i].pais[1] = NULL;
-        }else{
-            Jogo[i].pais[1] = &Selecao[auxid];
-        }
+        else
+            Jogo[i].pais[1] = &Selecao[auxid-1];
         fread(&(Jogo[i].placar), sizeof(Jogo[i].placar), 2, fp3);
         fread(&(Jogo[i].prorrogacao), sizeof(Jogo[i].prorrogacao), 2, fp3);
         fread(&(Jogo[i].penaltes), sizeof(Jogo[i].penaltes), 2, fp3);
@@ -242,9 +240,11 @@ void CARREGAR_JOGOS()
         fread(&(Jogo[i].hora), sizeof(Jogo[i].hora), 1, fp3);
         fread(&(Jogo[i].tipo), sizeof(Jogo[i].tipo), 1, fp3);
         fread(&(Jogo[i].id), sizeof(Jogo[i].id), 1, fp3);
-        
         if (Jogo[i].pais[0] != NULL && Jogo[i].pais[1] != NULL)
             Jogo[i].pais[0]->jogo[(Jogo[i].pais[0]->num_jogos)++] = Jogo[i].pais[1]->jogo[(Jogo[i].pais[1]->num_jogos)++] = &Jogo[i];
+    
+        // printf("\n\n%s  -  %s  - %d\n",Jogo[i].pais[0]->nome,Jogo[i].pais[1]->nome, Jogo[i].id);
+        // system("PAUSE");
     }
     fclose(fp3);
 }
