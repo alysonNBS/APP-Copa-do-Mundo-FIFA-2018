@@ -19,7 +19,6 @@ void time_final(int time, char *nome);
 void time_terceiro_lugar(int time, char *nome);
 
 
-
 void logo_app(void) {
         printf("************************************\n");
         printf("*                                  *\n");
@@ -44,7 +43,7 @@ void print_grupos(struct grupo *grupos) {
 
 void print_grupo(struct grupo g) {
     int i;
-
+    
     printf("GRUPO %c\n", g.g);
 
     // linha superior
