@@ -19,11 +19,11 @@ void menu_exibicao(void);
 
 int main()
 {
-    SETUP_SELECOES();
-    SETUP_GRUPOS();
-    SETUP_JOGOS_FASE_GRUPO();
+    // SETUP_SELECOES();
+    // SETUP_GRUPOS();
+    // SETUP_JOGOS_FASE_GRUPO();
 
-
+    CARREGAR_JOGOS(); 
     menu_principal();
 
 
@@ -64,6 +64,7 @@ void menu_principal(void)
                 break;
 
             case 0:
+                SALVAR_JOGOS();
                 break;
 
             default:

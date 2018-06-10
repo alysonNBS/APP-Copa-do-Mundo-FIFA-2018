@@ -33,6 +33,7 @@ typedef struct selecao
 {
     char nome[50];
     char sigla[4];
+    int id;
     int num_jogos;
     struct jogo **jogo;
     struct jogador jogador[23];
