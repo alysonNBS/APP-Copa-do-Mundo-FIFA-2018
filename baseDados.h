@@ -25,7 +25,7 @@ struct final Final;
 
 void corrige_acentos_nomes(void)
 {
-    int a_tio = 198, a_agudo = 160, a_circuflexo = 131, e_agudo = 130, i_agudo = 214, o_circuflexo = 147, u_agudo = 163, c_cedilha = 135;
+    int a_tio = 198, a_agudo = 160, a_circuflexo = 131, e_agudo = 130, i_agudo = 161, o_circuflexo = 147, u_agudo = 163, c_cedilha = 135;
 
     Selecao[Panama].nome[5] = Selecao[Croacia].nome[3] = Selecao[Australia].nome[5] = Selecao[Arabia_Saudita].nome[2] = a_agudo;
     Selecao[Russia].nome[1] = u_agudo;
@@ -174,6 +174,16 @@ void SETUP_JOGOS_FASE_GRUPO(void)
 
     //FINAL
     insere_jogo(63, NULL, NULL,"ECATERIMBURGO", (Tdata){2018, 07, 15}, (Thora){12, 00}, final);
+
+
+    Oitavas.jogo[0]=&Jogo[48];
+    Oitavas.jogo[1]=&Jogo[49];
+    Oitavas.jogo[2]=&Jogo[50];
+    Oitavas.jogo[3]=&Jogo[1];
+    Oitavas.jogo[4]=&Jogo[52];
+    Oitavas.jogo[5]=&Jogo[53];
+    Oitavas.jogo[6]=&Jogo[54];
+    Oitavas.jogo[7]=&Jogo[55];
 }
 
 
@@ -242,10 +252,17 @@ void CARREGAR_JOGOS()
         fread(&(Jogo[i].id), sizeof(Jogo[i].id), 1, fp3);
         if (Jogo[i].pais[0] != NULL && Jogo[i].pais[1] != NULL)
             Jogo[i].pais[0]->jogo[(Jogo[i].pais[0]->num_jogos)++] = Jogo[i].pais[1]->jogo[(Jogo[i].pais[1]->num_jogos)++] = &Jogo[i];
-    
-        // printf("\n\n%s  -  %s  - %d\n",Jogo[i].pais[0]->nome,Jogo[i].pais[1]->nome, Jogo[i].id);
-        // system("PAUSE");
     }
+        /*testando
+        Oitavas.jogo[0]=&Jogo[48];
+        Oitavas.jogo[1]=&Jogo[49];
+        Oitavas.jogo[2]=&Jogo[50];
+        Oitavas.jogo[3]=&Jogo[1];
+        Oitavas.jogo[4]=&Jogo[52];
+        Oitavas.jogo[5]=&Jogo[53];
+        Oitavas.jogo[6]=&Jogo[54];
+        Oitavas.jogo[7]=&Jogo[55];
+        */
     fclose(fp3);
 }
 
