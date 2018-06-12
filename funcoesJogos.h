@@ -22,8 +22,6 @@ struct selecao * vencedor(struct jogo jogo)
     return NULL;
 }
 
-
-
 int empate(struct jogo j)
 {
     if( vencedor(j) == NULL)

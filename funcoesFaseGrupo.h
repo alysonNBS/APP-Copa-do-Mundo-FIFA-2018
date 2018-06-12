@@ -9,6 +9,7 @@ int gc(struct selecao s);
 
 
 
+
 int pontos(struct selecao s)
 {
     int i, p;
