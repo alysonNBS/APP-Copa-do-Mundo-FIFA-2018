@@ -129,8 +129,6 @@ void menu_insercao_fase(void)
     do
     {
         system("cls");
-        char t1[50], t2[50];
-        int p1, p2;
         logo_app();
         printf("\tSELECIONE A FASE\n\n", 128, 199);
         
@@ -147,38 +145,23 @@ void menu_insercao_fase(void)
 
         leituraDeOpcao:
         scanf("%d", &opcao);
-
+        int z;
         
         switch (opcao)
         {
             case 1:
-                ler_resultado(t1,t2,&p1,&p2);
-                cadastrar_resultado(Jogo,t1,t2,p1,p2,0);
-                break;
             case 2:
-                ler_resultado(t1,t2,&p1,&p2);
-                cadastrar_resultado(Jogo,t1,t2,p1,p2,1);
-                break;
-            case 3:
-                ler_resultado(t1,t2,&p1,&p2);
-                cadastrar_resultado(Jogo,t1,t2,p1,p2,2);
-                break;            
+            case 3:           
             case 4:
-                ler_resultado(t1,t2,&p1,&p2);
-                cadastrar_resultado(Jogo,t1,t2,p1,p2,3);
-                break;
             case 5:
-                ler_resultado(t1,t2,&p1,&p2);
-                cadastrar_resultado(Jogo,t1,t2,p1,p2,4);
-                break;
             case 6:
-                ler_resultado(t1,t2,&p1,&p2);
-                cadastrar_resultado(Jogo,t1,t2,p1,p2,5);
-                break;
-
+                if (cadastrar_resultado(Jogo, opcao-1)==-1)
+                    printf("O jogo n%co existe. Tente novamente.\n", 198);
+                else
+                    printf("Resultado cadastrado com sucesso!\n");
+                system("PAUSE");
             case 0:
                 break;
-
             default:
                 printf("\nOp%c%co inv%clida! Tente novamente: ", 135, 198, 160);
                 goto leituraDeOpcao;
