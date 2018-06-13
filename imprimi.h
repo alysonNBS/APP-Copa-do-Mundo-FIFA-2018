@@ -19,7 +19,6 @@ void time_final(int time, char *nome);
 void time_terceiro_lugar(int time, char *nome);
 
 
-
 void logo_app(void) {
         printf("************************************\n");
         printf("*                                  *\n");
@@ -44,7 +43,7 @@ void print_grupos(struct grupo *grupos) {
 
 void print_grupo(struct grupo g) {
     int i;
-
+    
     printf("GRUPO %c\n", g.g);
 
     // linha superior
@@ -130,7 +129,7 @@ void print_grupo(struct grupo g) {
     //selecoes
     int colocacao=1, aux_colocacao=1;
 
-    qsort(g.selecao, 4, sizeof(struct selecao), classificacao);
+    qsort(g.selecao, 4, sizeof(struct selecao *), classificacao);
 
 
     printf("%c %d  %-46s %c %d %c %d %c %d %c %d %c %d %c %2d %c %2d %c %2d %c %5.1f %c\n",
@@ -159,7 +158,7 @@ void print_grupo(struct grupo g) {
     }
 
     
-    qsort(g.selecao, 4, sizeof(struct selecao), padrao);
+    qsort(g.selecao, 4, sizeof(struct selecao *), padrao);
     
 
 

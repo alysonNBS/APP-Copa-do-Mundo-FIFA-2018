@@ -116,3 +116,33 @@ int gc(struct selecao s) {
 
     return gols;
 }
+
+
+
+int classificacao(const void *s1, const void *s2)
+{
+    Tselecao **selecao1 = (Tselecao**) s1;
+    Tselecao **selecao2 = (Tselecao**) s2;
+
+    int dif_pontos = pontos(**selecao1) - pontos(**selecao2);
+    int dif_saldo = saldo(**selecao1) - saldo(**selecao2);
+    int dif_gp = gp(**selecao1) - gp(**selecao2);
+
+    if(dif_pontos)
+        return -dif_pontos;
+    if(dif_saldo)
+        return -dif_saldo;
+    if(dif_gp)
+        return -dif_gp;
+    return 0;
+}
+
+
+
+int padrao(const void *s1, const void *s2)
+{
+    Tselecao **selecao1 = (Tselecao**) s1;
+    Tselecao **selecao2 = (Tselecao**) s2;
+
+    return ( (**selecao1).id < (**selecao2).id ) ? -1 : 1;
+}
