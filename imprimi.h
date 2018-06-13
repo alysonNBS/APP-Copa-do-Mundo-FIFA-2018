@@ -130,7 +130,7 @@ void print_grupo(struct grupo g) {
     //selecoes
     int colocacao=1, aux_colocacao=1;
 
-    //qsort(g.selecao, 4, sizeof(struct grupo), classificacao);
+    qsort(g.selecao, 4, sizeof(struct selecao), classificacao);
 
 
     printf("%c %d  %-46s %c %d %c %d %c %d %c %d %c %d %c %2d %c %2d %c %2d %c %5.1f %c\n",
@@ -141,7 +141,7 @@ void print_grupo(struct grupo g) {
     
     for(i=1; i<4; i++)
     {
-        //if( classificacao(g.selecao+i-1, g.selecao+i) != 0)
+        if( classificacao(g.selecao+i-1, g.selecao+i) != 0)
         {
             colocacao += aux_colocacao;
             aux_colocacao = 0;
@@ -159,7 +159,7 @@ void print_grupo(struct grupo g) {
     }
 
     
-    //qsort(g.selecao, 4, sizeof(struct grupo), padrao);
+    qsort(g.selecao, 4, sizeof(struct selecao), padrao);
     
 
 
@@ -326,8 +326,7 @@ void time_terceiro_lugar(int time, char *nome) {
 
 
 
-void print_oitavas(struct oitava *oitavas)
-{
+void print_oitavas(struct oitava *oitavas) {
     int i;
     
     for(i=0; i<8; i++)
@@ -340,8 +339,7 @@ void print_oitavas(struct oitava *oitavas)
 
 
 
-void print_quartas(struct quarta *quartas)
-{
+void print_quartas(struct quarta *quartas) {
     int i;
     
     for(i=0; i<4; i++)
@@ -354,8 +352,7 @@ void print_quartas(struct quarta *quartas)
 
 
 
-void print_semi_finais(struct semi_final *semis)
-{
+void print_semi_finais(struct semi_final *semis) {
     int i;
     
     for(i=0; i<2; i++)
@@ -368,8 +365,7 @@ void print_semi_finais(struct semi_final *semis)
 
 
 
-void print_final(struct final *final)
-{
+void print_final(struct final *final) {
         printf("\n\t\tFinal\n");
         print_jogo(*final->jogo);
         printf("\n");
@@ -377,8 +373,7 @@ void print_final(struct final *final)
 
 
 
-void print_terc_lugar(struct terceiro_lugar *terc_lugar)
-{
+void print_terc_lugar(struct terceiro_lugar *terc_lugar) {
     
         printf("\n\t    Terceiro Lugar\n");
         print_jogo(*terc_lugar->jogo);
