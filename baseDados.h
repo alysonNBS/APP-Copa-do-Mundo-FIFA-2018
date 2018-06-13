@@ -176,14 +176,6 @@ void SETUP_JOGOS_FASE_GRUPO(void)
     insere_jogo(63, NULL, NULL,"ECATERIMBURGO", (Tdata){2018, 07, 15}, (Thora){12, 00}, final);
 
 
-    Oitavas.jogo[0]=&Jogo[48];
-    Oitavas.jogo[1]=&Jogo[49];
-    Oitavas.jogo[2]=&Jogo[50];
-    Oitavas.jogo[3]=&Jogo[1];
-    Oitavas.jogo[4]=&Jogo[52];
-    Oitavas.jogo[5]=&Jogo[53];
-    Oitavas.jogo[6]=&Jogo[54];
-    Oitavas.jogo[7]=&Jogo[55];
 }
 
 
@@ -205,14 +197,13 @@ void SALVAR_JOGOS()
             fwrite(&(Jogo[i].placar), sizeof(Jogo[i].placar), 2, fp);
             fwrite(&(Jogo[i].prorrogacao), sizeof(Jogo[i].prorrogacao), 2, fp);
             fwrite(&(Jogo[i].penaltes), sizeof(Jogo[i].penaltes), 2, fp);
-            fwrite(Jogo[i].local, sizeof(Jogo[i].local), 1, fp);
+            fwrite(Jogo[i].local, sizeof(Jogo[i].local)*3, 1, fp);
             fwrite(&(Jogo[i].data), sizeof(Jogo[i].data), 1, fp);
             fwrite(&(Jogo[i].hora), sizeof(Jogo[i].hora), 1, fp);
             fwrite(&(Jogo[i].tipo), sizeof(Jogo[i].tipo), 1, fp);
             fwrite(&(Jogo[i].id), sizeof(Jogo[i].id), 1, fp);
             
             // printf("\n\n%s  -  %s \n",Jogo[i].pais[0]->nome, Jogo[i].pais[1]->nome);
-            // system("PAUSE");
     }
     fclose(fp);
 }
@@ -227,42 +218,60 @@ void CARREGAR_JOGOS()
     int auxid;
     fp3 = fopen("carga_jogos.arq", "rb");
 
-    for (i = 0; i < 64; i++)
-    {
-        Jogo[i].pais[0] = malloc(sizeof(struct selecao));
-        fread(&auxid, sizeof(int), 1, fp3);
-        if (auxid == 0)
-            Jogo[i].pais[0] = NULL;
-        else
-            Jogo[i].pais[0] = &Selecao[auxid-1];
-        Jogo[i].pais[1] = malloc(sizeof(struct selecao));
-        fread(&auxid, sizeof(int), 1, fp3);
-        if (auxid == 0)
-            Jogo[i].pais[1] = NULL;
-        else
-            Jogo[i].pais[1] = &Selecao[auxid-1];
-        fread(&(Jogo[i].placar), sizeof(Jogo[i].placar), 2, fp3);
-        fread(&(Jogo[i].prorrogacao), sizeof(Jogo[i].prorrogacao), 2, fp3);
-        fread(&(Jogo[i].penaltes), sizeof(Jogo[i].penaltes), 2, fp3);
-        Jogo[i].local = malloc(sizeof(Jogo[i].local));
-        fread(Jogo[i].local, sizeof(Jogo[i].local), 1, fp3);
-        fread(&(Jogo[i].data), sizeof(Jogo[i].data), 1, fp3);
-        fread(&(Jogo[i].hora), sizeof(Jogo[i].hora), 1, fp3);
-        fread(&(Jogo[i].tipo), sizeof(Jogo[i].tipo), 1, fp3);
-        fread(&(Jogo[i].id), sizeof(Jogo[i].id), 1, fp3);
-        if (Jogo[i].pais[0] != NULL && Jogo[i].pais[1] != NULL)
-            Jogo[i].pais[0]->jogo[(Jogo[i].pais[0]->num_jogos)++] = Jogo[i].pais[1]->jogo[(Jogo[i].pais[1]->num_jogos)++] = &Jogo[i];
+    if (fp3 == NULL){
+        SETUP_JOGOS_FASE_GRUPO();
+        SALVAR_JOGOS();
+    }else{
+        for (i = 0; i < 64; i++)
+        {
+            Jogo[i].pais[0] = malloc(sizeof(struct selecao));
+            fread(&auxid, sizeof(int), 1, fp3);
+            if (auxid == 0)
+                Jogo[i].pais[0] = NULL;
+            else
+                Jogo[i].pais[0] = &Selecao[auxid-1];
+            Jogo[i].pais[1] = malloc(sizeof(struct selecao));
+            fread(&auxid, sizeof(int), 1, fp3);
+            if (auxid == 0)
+                Jogo[i].pais[1] = NULL;
+            else
+                Jogo[i].pais[1] = &Selecao[auxid-1];
+            fread(&(Jogo[i].placar), sizeof(Jogo[i].placar), 2, fp3);
+            fread(&(Jogo[i].prorrogacao), sizeof(Jogo[i].prorrogacao), 2, fp3);
+            fread(&(Jogo[i].penaltes), sizeof(Jogo[i].penaltes), 2, fp3);
+            Jogo[i].local = malloc(sizeof(Jogo[i].local)*3);
+            fread(Jogo[i].local, sizeof(Jogo[i].local)*3, 1, fp3);
+            fread(&(Jogo[i].data), sizeof(Jogo[i].data), 1, fp3);
+            fread(&(Jogo[i].hora), sizeof(Jogo[i].hora), 1, fp3);
+            fread(&(Jogo[i].tipo), sizeof(Jogo[i].tipo), 1, fp3);
+            fread(&(Jogo[i].id), sizeof(Jogo[i].id), 1, fp3);
+            if (Jogo[i].pais[0] != NULL && Jogo[i].pais[1] != NULL)
+                Jogo[i].pais[0]->jogo[(Jogo[i].pais[0]->num_jogos)++] = Jogo[i].pais[1]->jogo[(Jogo[i].pais[1]->num_jogos)++] = &Jogo[i];
+        }
     }
-        /*testando
-        Oitavas.jogo[0]=&Jogo[48];
-        Oitavas.jogo[1]=&Jogo[49];
-        Oitavas.jogo[2]=&Jogo[50];
-        Oitavas.jogo[3]=&Jogo[1];
-        Oitavas.jogo[4]=&Jogo[52];
-        Oitavas.jogo[5]=&Jogo[53];
-        Oitavas.jogo[6]=&Jogo[54];
-        Oitavas.jogo[7]=&Jogo[55];
-        */
+
+    //VINCULAÇÃO DOS JOGOS COM AS STRUCTS DE FASES
+    Oitavas.jogo[0] = &Jogo[48];
+    Oitavas.jogo[1] = &Jogo[49];
+    Oitavas.jogo[2] = &Jogo[50];
+    Oitavas.jogo[3] = &Jogo[51];
+    Oitavas.jogo[4] = &Jogo[52];
+    Oitavas.jogo[5] = &Jogo[53];
+    Oitavas.jogo[6] = &Jogo[54];
+    Oitavas.jogo[7] = &Jogo[55];
+
+    Quartas.jogo[0] = &Jogo[56];
+    Quartas.jogo[1] = &Jogo[57];
+    Quartas.jogo[2] = &Jogo[58];
+    Quartas.jogo[3] = &Jogo[59];
+
+    Semi_final.jogo[0] = &Jogo[60];
+    Semi_final.jogo[1] = &Jogo[61];
+
+    Terc_lugar.jogo = &Jogo[62];
+
+    Final.jogo = &Jogo[63];
+
     fclose(fp3);
 }
 
