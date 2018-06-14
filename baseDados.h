@@ -1,6 +1,6 @@
 #define NUM_JOGOS 48+8+4+2+2
 
-//selecoes participantes da copa
+
 struct selecao Selecao[32] = {
 {"Arabia Saudita", "ARA"}, {"Egito", "EGI"}, {"Russia", "RUS"}, {"Uruguai", "URU"},
 {"Espanha", "ESP"}, {"Ira", "IRA"}, {"Marrocos", "MAR"}, {"Portugal", "POR"},
@@ -11,11 +11,8 @@ struct selecao Selecao[32] = {
 {"Belgica", "BEL"}, {"Inglaterra", "ING"}, {"Panama", "PAN"}, {"Tunisia", "TUN"},
 {"Colombia", "COL"}, {"Japao", "JAP"}, {"Polonia", "POL"}, {"Senegal", "SEN"}
 };
-//todos os jogos da copa
 struct jogo Jogo[NUM_JOGOS];
-//grupos formados para a copa
 struct grupo Grupo[8] = { {'A'}, {'B'}, {'C'}, {'D'}, {'E'}, {'F'}, {'G'}, {'H'} };
-//jogos apenas das oitavas
 struct oitava Oitavas;
 struct quarta Quartas;
 struct semi_final Semi_final;
@@ -86,7 +83,7 @@ void insere_jogo(const int id, Tselecao *pais1, Tselecao *pais2, char *local, Td
 
 
 
-void SETUP_JOGOS_FASE_GRUPO(void)
+void SETUP_JOGOS(void)
 {
     //GRUPO A
     insere_jogo(0, &Selecao[Russia], &Selecao[Arabia_Saudita], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){12, 00}, faseDeGrupo);
@@ -219,7 +216,7 @@ void CARREGAR_JOGOS()
     fp3 = fopen("carga_jogos.arq", "rb");
 
     if (fp3 == NULL){
-        SETUP_JOGOS_FASE_GRUPO();
+        SETUP_JOGOS();
         SALVAR_JOGOS();
     }else{
         for (i = 0; i < 64; i++)

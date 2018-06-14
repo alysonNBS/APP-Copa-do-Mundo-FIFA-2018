@@ -210,62 +210,62 @@ void print_jogo(struct jogo j) {
     if(j.placar[0] == -1) {
         switch(j.tipo) {
             case faseDeGrupo:
-                printf("\n\t %s     X     %s\n", j.pais[0]->sigla, j.pais[1]->sigla);
+                printf("\n\t%s  %3s X %3s  %s\n", j.pais[0]->sigla, "", "", j.pais[1]->sigla);
                 break;
 
             case oitava:
-                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->sigla)
                 : time_oitava(j.id-48, 0, pais1);
-                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->sigla)
                 : time_oitava(j.id-48, 1, pais2);
 
 
-                printf("\n\t %s     X     %s\n", pais1, pais2);
+                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
                 break;
 
             case quarta:
-                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->sigla)
                 : time_quarta(j.id-56, 0, pais1);
-                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->sigla)
                 : time_quarta(j.id-56, 1, pais2);
 
 
-                printf("\n%s     X     %s\n", pais1, pais2);
+                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
                 break;
 
             case semi_final:
-                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->sigla)
                 : time_semi(j.id-60, 0, pais1);
-                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->sigla)
                 : time_semi(j.id-60, 1, pais2);
 
 
-                printf("\n%s     X     %s\n", pais1, pais2);
+                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
                 break;
 
             case final:
-                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->sigla)
                 : time_final(0, pais1);
-                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->sigla)
                 : time_final(1, pais2);
 
 
-                printf("\n%s     X     %s\n", pais1, pais2);
+                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
                 break;
 
             case terc_lugar:
-                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->nome)
+                (j.pais[0]->nome != NULL) ? strcpy(pais1, j.pais[0]->sigla)
                 : time_terceiro_lugar(0, pais1);
-                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->nome)
+                (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->sigla)
                 : time_terceiro_lugar(1, pais2);
 
 
-                printf("\n%s     X     %s\n", pais1, pais2);
+                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
                 break;
         }
     } else
     {
-        printf("\n\t %s  %-3d X %3d  %s\n", j.pais[0]->sigla, j.placar[0], j.placar[1], j.pais[1]->sigla);
+        printf("\n\t%s  %-3d X %3d  %s\n", j.pais[0]->sigla, j.placar[0], j.placar[1], j.pais[1]->sigla);
     }
 }
 
