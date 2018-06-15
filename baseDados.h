@@ -1,5 +1,18 @@
 #define NUM_JOGOS 48+8+4+2+2
 
+#define OLIMPICO_LUJNIKI "OL\xD6MPICO LUJNIKI"
+#define ECATERIMBURGO "ECATERIMBURGO"
+#define SAO_PETERSBURGO "S\xC7O PETERSBURGO"
+#define ROSTOV "ROSTOV"
+#define SAMARA "SAMARA"
+#define VOLGOGRADO "VOLGOGRADO"
+#define OLIMPICO_DE_SOCHI "OL\xD6MPICO DE SOCHI"
+#define ARENA_KAZAN "ARENA KAZAN"
+#define SARANSK "SARANSK"
+#define KALININGRADO "KALININGRADO"
+#define SPARTAK "SPARTAK"
+#define NIZHNY_NOVGOROD "NIZHNY NOVGOROD"
+
 
 struct selecao Selecao[32] = {
 {"Arabia Saudita", "ARA"}, {"Egito", "EGI"}, {"Russia", "RUS"}, {"Uruguai", "URU"},
@@ -86,91 +99,91 @@ void insere_jogo(const int id, Tselecao *pais1, Tselecao *pais2, char *local, Td
 void SETUP_JOGOS(void)
 {
     //GRUPO A
-    insere_jogo(0, &Selecao[Russia], &Selecao[Arabia_Saudita], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){12, 00}, faseDeGrupo);
-    insere_jogo(1, &Selecao[Egito], &Selecao[Uruguai], "ECATERIMBURGO", (Tdata){2018, 06, 15}, (Thora){9, 00}, faseDeGrupo);
-    insere_jogo(2, &Selecao[Russia], &Selecao[Egito], "SÃO PETERSBURGO", (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
-    insere_jogo(3, &Selecao[Uruguai], &Selecao[Arabia_Saudita], "ROSTOV", (Tdata){2018, 06, 20}, (Thora){12, 00}, faseDeGrupo);
-    insere_jogo(4, &Selecao[Uruguai], &Selecao[Russia], "SAMARA", (Tdata){2018, 06, 25}, (Thora){11, 00}, faseDeGrupo);
-    insere_jogo(5, &Selecao[Arabia_Saudita], &Selecao[Egito], "VOLGOGRADO", (Tdata){2018, 06, 25}, (Thora){11, 00}, faseDeGrupo);
+    insere_jogo(0, &Selecao[Russia], &Selecao[Arabia_Saudita], OLIMPICO_LUJNIKI, (Tdata){2018, 06, 14}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(1, &Selecao[Egito], &Selecao[Uruguai], ECATERIMBURGO, (Tdata){2018, 06, 15}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(2, &Selecao[Russia], &Selecao[Egito], SAO_PETERSBURGO, (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(3, &Selecao[Uruguai], &Selecao[Arabia_Saudita], ROSTOV, (Tdata){2018, 06, 20}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(4, &Selecao[Uruguai], &Selecao[Russia], SAMARA, (Tdata){2018, 06, 25}, (Thora){11, 00}, faseDeGrupo);
+    insere_jogo(5, &Selecao[Arabia_Saudita], &Selecao[Egito], VOLGOGRADO, (Tdata){2018, 06, 25}, (Thora){11, 00}, faseDeGrupo);
     //GRUPO B
-    insere_jogo(6, &Selecao[Marrocos], &Selecao[Ira], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){18, 00}, faseDeGrupo);
-    insere_jogo(7, &Selecao[Portugal], &Selecao[Espanha], "ECATERIMBURGO", (Tdata){2018, 06, 15}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(8, &Selecao[Portugal], &Selecao[Marrocos], "SÃO PETERSBURGO", (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
-    insere_jogo(9, &Selecao[Ira], &Selecao[Espanha], "ROSTOV", (Tdata){2018, 06, 20}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(10, &Selecao[Ira], &Selecao[Portugal], "SAMARA", (Tdata){2018, 06, 25}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(11, &Selecao[Espanha], &Selecao[Marrocos], "VOLGOGRADO", (Tdata){2018, 06, 25}, (Thora){20, 00}, faseDeGrupo);
+    insere_jogo(6, &Selecao[Marrocos], &Selecao[Ira], SAO_PETERSBURGO, (Tdata){2018, 06, 15}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(7, &Selecao[Portugal], &Selecao[Espanha], OLIMPICO_DE_SOCHI, (Tdata){2018, 06, 15}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(8, &Selecao[Portugal], &Selecao[Marrocos], OLIMPICO_LUJNIKI, (Tdata){2018, 06, 20}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(9, &Selecao[Ira], &Selecao[Espanha], ARENA_KAZAN, (Tdata){2018, 06, 20}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(10, &Selecao[Ira], &Selecao[Portugal], SARANSK, (Tdata){2018, 06, 25}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(11, &Selecao[Espanha], &Selecao[Marrocos], KALININGRADO, (Tdata){2018, 06, 25}, (Thora){15, 00}, faseDeGrupo);
     //GRUPO C
-    insere_jogo(12, &Selecao[Franca], &Selecao[Australia], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){18, 00}, faseDeGrupo);
-    insere_jogo(13, &Selecao[Peru], &Selecao[Dinamarca], "ECATERIMBURGO", (Tdata){2018, 06, 15}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(14, &Selecao[Dinamarca], &Selecao[Australia], "SÃO PETERSBURGO", (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
-    insere_jogo(15, &Selecao[Franca], &Selecao[Peru], "ROSTOV", (Tdata){2018, 06, 20}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(16, &Selecao[Dinamarca], &Selecao[Franca], "SAMARA", (Tdata){2018, 06, 25}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(17, &Selecao[Australia], &Selecao[Peru], "VOLGOGRADO", (Tdata){2018, 06, 25}, (Thora){20, 00}, faseDeGrupo);
+    insere_jogo(12, &Selecao[Franca], &Selecao[Australia], ARENA_KAZAN, (Tdata){2018, 06, 16}, (Thora){7, 00}, faseDeGrupo);
+    insere_jogo(13, &Selecao[Peru], &Selecao[Dinamarca], SARANSK, (Tdata){2018, 06, 16}, (Thora){13, 00}, faseDeGrupo);
+    insere_jogo(14, &Selecao[Dinamarca], &Selecao[Australia], SAMARA, (Tdata){2018, 06, 21}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(15, &Selecao[Franca], &Selecao[Peru], ECATERIMBURGO, (Tdata){2018, 06, 21}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(16, &Selecao[Dinamarca], &Selecao[Franca], OLIMPICO_LUJNIKI, (Tdata){2018, 06, 26}, (Thora){11, 00}, faseDeGrupo);
+    insere_jogo(17, &Selecao[Australia], &Selecao[Peru], OLIMPICO_DE_SOCHI, (Tdata){2018, 06, 26}, (Thora){11, 00}, faseDeGrupo);
     //GRUPO D
-    insere_jogo(18, &Selecao[Argentina], &Selecao[Islandia], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){18, 00}, faseDeGrupo);
-    insere_jogo(19, &Selecao[Croacia], &Selecao[Nigeria], "ECATERIMBURGO", (Tdata){2018, 06, 15}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(20, &Selecao[Argentina], &Selecao[Croacia], "SÃO PETERSBURGO", (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
-    insere_jogo(21, &Selecao[Nigeria], &Selecao[Islandia], "ROSTOV", (Tdata){2018, 06, 20}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(22, &Selecao[Nigeria], &Selecao[Argentina], "SAMARA", (Tdata){2018, 06, 25}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(23, &Selecao[Islandia], &Selecao[Croacia], "VOLGOGRADO", (Tdata){2018, 06, 25}, (Thora){20, 00}, faseDeGrupo);
+    insere_jogo(18, &Selecao[Argentina], &Selecao[Islandia], SPARTAK, (Tdata){2018, 06, 16}, (Thora){10, 00}, faseDeGrupo);
+    insere_jogo(19, &Selecao[Croacia], &Selecao[Nigeria], KALININGRADO, (Tdata){2018, 06, 16}, (Thora){16, 00}, faseDeGrupo);
+    insere_jogo(20, &Selecao[Argentina], &Selecao[Croacia], NIZHNY_NOVGOROD, (Tdata){2018, 06, 21}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(21, &Selecao[Nigeria], &Selecao[Islandia], VOLGOGRADO, (Tdata){2018, 06, 22}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(22, &Selecao[Nigeria], &Selecao[Argentina], SAO_PETERSBURGO, (Tdata){2018, 06, 26}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(23, &Selecao[Islandia], &Selecao[Croacia], ROSTOV, (Tdata){2018, 06, 26}, (Thora){15, 00}, faseDeGrupo);
 
     //GRUPO E
-    insere_jogo(24, &Selecao[Costa_Rica], &Selecao[Servia], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){18, 00}, faseDeGrupo);
-    insere_jogo(25, &Selecao[Brasil], &Selecao[Suica], "ECATERIMBURGO", (Tdata){2018, 06, 15}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(26, &Selecao[Brasil], &Selecao[Costa_Rica], "SÃO PETERSBURGO", (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
-    insere_jogo(27, &Selecao[Servia], &Selecao[Suica], "ROSTOV", (Tdata){2018, 06, 20}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(28, &Selecao[Servia], &Selecao[Brasil], "SAMARA", (Tdata){2018, 06, 25}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(29, &Selecao[Suica], &Selecao[Costa_Rica], "VOLGOGRADO", (Tdata){2018, 06, 25}, (Thora){20, 00}, faseDeGrupo);
+    insere_jogo(24, &Selecao[Costa_Rica], &Selecao[Servia], SAMARA, (Tdata){2018, 06, 17}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(25, &Selecao[Brasil], &Selecao[Suica], ROSTOV, (Tdata){2018, 06, 17}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(26, &Selecao[Brasil], &Selecao[Costa_Rica], SAO_PETERSBURGO, (Tdata){2018, 06, 22}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(27, &Selecao[Servia], &Selecao[Suica], KALININGRADO, (Tdata){2018, 06, 22}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(28, &Selecao[Servia], &Selecao[Brasil], SPARTAK, (Tdata){2018, 06, 27}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(29, &Selecao[Suica], &Selecao[Costa_Rica], NIZHNY_NOVGOROD, (Tdata){2018, 06, 27}, (Thora){15, 00}, faseDeGrupo);
 
     //GRUPO F
-    insere_jogo(30, &Selecao[Alemanha], &Selecao[Mexico], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){18, 00}, faseDeGrupo);
-    insere_jogo(31, &Selecao[Suecia], &Selecao[Coreia_do_Sul], "ECATERIMBURGO", (Tdata){2018, 06, 15}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(32, &Selecao[Coreia_do_Sul], &Selecao[Mexico], "SÃO PETERSBURGO", (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
-    insere_jogo(33, &Selecao[Alemanha], &Selecao[Suecia], "ROSTOV", (Tdata){2018, 06, 20}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(34, &Selecao[Coreia_do_Sul], &Selecao[Alemanha], "SAMARA", (Tdata){2018, 06, 25}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(35, &Selecao[Mexico], &Selecao[Suecia], "VOLGOGRADO", (Tdata){2018, 06, 25}, (Thora){20, 00}, faseDeGrupo);
+    insere_jogo(30, &Selecao[Alemanha], &Selecao[Mexico], OLIMPICO_LUJNIKI, (Tdata){2018, 06, 17}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(31, &Selecao[Suecia], &Selecao[Coreia_do_Sul], NIZHNY_NOVGOROD, (Tdata){2018, 06, 18}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(32, &Selecao[Coreia_do_Sul], &Selecao[Mexico], ROSTOV, (Tdata){2018, 06, 23}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(33, &Selecao[Alemanha], &Selecao[Suecia], OLIMPICO_DE_SOCHI, (Tdata){2018, 06, 23}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(34, &Selecao[Coreia_do_Sul], &Selecao[Alemanha], ARENA_KAZAN, (Tdata){2018, 06, 27}, (Thora){11, 00}, faseDeGrupo);
+    insere_jogo(35, &Selecao[Mexico], &Selecao[Suecia], ECATERIMBURGO, (Tdata){2018, 06, 27}, (Thora){11, 00}, faseDeGrupo);
 
     //GRUPO G
-    insere_jogo(36, &Selecao[Belgica], &Selecao[Panama], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){18, 00}, faseDeGrupo);
-    insere_jogo(37, &Selecao[Tunisia], &Selecao[Inglaterra], "ECATERIMBURGO", (Tdata){2018, 06, 15}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(38, &Selecao[Belgica], &Selecao[Tunisia], "SÃO PETERSBURGO", (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
-    insere_jogo(39, &Selecao[Inglaterra], &Selecao[Panama], "ROSTOV", (Tdata){2018, 06, 20}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(40, &Selecao[Inglaterra], &Selecao[Belgica], "SAMARA", (Tdata){2018, 06, 25}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(41, &Selecao[Panama], &Selecao[Tunisia], "VOLGOGRADO", (Tdata){2018, 06, 25}, (Thora){20, 00}, faseDeGrupo);
+    insere_jogo(36, &Selecao[Belgica], &Selecao[Panama], OLIMPICO_DE_SOCHI, (Tdata){2018, 06, 18}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(37, &Selecao[Tunisia], &Selecao[Inglaterra], VOLGOGRADO, (Tdata){2018, 06, 18}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(38, &Selecao[Belgica], &Selecao[Tunisia], SPARTAK, (Tdata){2018, 06, 23}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(39, &Selecao[Inglaterra], &Selecao[Panama], NIZHNY_NOVGOROD, (Tdata){2018, 06, 24}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(40, &Selecao[Inglaterra], &Selecao[Belgica], KALININGRADO, (Tdata){2018, 06, 28}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(41, &Selecao[Panama], &Selecao[Tunisia], KALININGRADO, (Tdata){2018, 06, 28}, (Thora){15, 00}, faseDeGrupo);
 
     //GRUPO H
-    insere_jogo(42, &Selecao[Colombia], &Selecao[Japao], "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 14}, (Thora){18, 00}, faseDeGrupo);
-    insere_jogo(43, &Selecao[Polonia], &Selecao[Senegal], "ECATERIMBURGO", (Tdata){2018, 06, 15}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(44, &Selecao[Japao], &Selecao[Senegal], "SÃO PETERSBURGO", (Tdata){2018, 06, 19}, (Thora){15, 00}, faseDeGrupo);
-    insere_jogo(45, &Selecao[Polonia], &Selecao[Colombia], "ROSTOV", (Tdata){2018, 06, 20}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(46, &Selecao[Japao], &Selecao[Polonia], "SAMARA", (Tdata){2018, 06, 25}, (Thora){21, 00}, faseDeGrupo);
-    insere_jogo(47, &Selecao[Senegal], &Selecao[Colombia], "VOLGOGRADO", (Tdata){2018, 06, 25}, (Thora){20, 00}, faseDeGrupo);
+    insere_jogo(42, &Selecao[Colombia], &Selecao[Japao], SARANSK, (Tdata){2018, 06, 19}, (Thora){9, 00}, faseDeGrupo);
+    insere_jogo(43, &Selecao[Polonia], &Selecao[Senegal], SPARTAK, (Tdata){2018, 06, 19}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(44, &Selecao[Japao], &Selecao[Senegal], ECATERIMBURGO, (Tdata){2018, 06, 24}, (Thora){12, 00}, faseDeGrupo);
+    insere_jogo(45, &Selecao[Polonia], &Selecao[Colombia], ARENA_KAZAN, (Tdata){2018, 06, 24}, (Thora){15, 00}, faseDeGrupo);
+    insere_jogo(46, &Selecao[Japao], &Selecao[Polonia], VOLGOGRADO, (Tdata){2018, 06, 28}, (Thora){11, 00}, faseDeGrupo);
+    insere_jogo(47, &Selecao[Senegal], &Selecao[Colombia], SAMARA, (Tdata){2018, 06, 28}, (Thora){11, 00}, faseDeGrupo);
 
     //OITAVAS DE FINAL
-    insere_jogo(48, NULL, NULL, "OLÍMPICO LUJNIKI", (Tdata){2018, 06, 30}, (Thora){11, 00}, oitava);
-    insere_jogo(49, NULL, NULL, "ECATERIMBURGO", (Tdata){2018, 06, 30}, (Thora){15, 00}, oitava);
-    insere_jogo(50, NULL, NULL, "OLÍMPICO LUJNIKI", (Tdata){2018, 07, 01}, (Thora){11, 00}, oitava);
-    insere_jogo(51, NULL, NULL, "ECATERIMBURGO", (Tdata){2018, 07, 01}, (Thora){15, 00}, oitava);
-    insere_jogo(52, NULL, NULL, "OLÍMPICO LUJNIKI", (Tdata){2018, 07, 02}, (Thora){11, 00}, oitava);
-    insere_jogo(53, NULL, NULL, "ECATERIMBURGO", (Tdata){2018, 07, 02}, (Thora){15, 00}, oitava);
-    insere_jogo(54, NULL, NULL, "OLÍMPICO LUJNIKI", (Tdata){2018, 07, 03}, (Thora){11, 00}, oitava);
-    insere_jogo(55, NULL, NULL, "ECATERIMBURGO", (Tdata){2018, 07, 03}, (Thora){15, 00}, oitava);
+    insere_jogo(48, NULL, NULL, OLIMPICO_DE_SOCHI, (Tdata){2018, 06, 30}, (Thora){15, 00}, oitava);
+    insere_jogo(49, NULL, NULL, ARENA_KAZAN, (Tdata){2018, 06, 30}, (Thora){11, 00}, oitava);
+    insere_jogo(50, NULL, NULL, SAMARA, (Tdata){2018, 07, 02}, (Thora){11, 00}, oitava);
+    insere_jogo(51, NULL, NULL, ROSTOV, (Tdata){2018, 07, 02}, (Thora){15, 00}, oitava);
+    insere_jogo(52, NULL, NULL, OLIMPICO_LUJNIKI, (Tdata){2018, 07, 01}, (Thora){11, 00}, oitava);
+    insere_jogo(53, NULL, NULL, NIZHNY_NOVGOROD, (Tdata){2018, 07, 01}, (Thora){15, 00}, oitava);
+    insere_jogo(54, NULL, NULL, SAO_PETERSBURGO, (Tdata){2018, 07, 03}, (Thora){11, 00}, oitava);
+    insere_jogo(55, NULL, NULL, SPARTAK, (Tdata){2018, 07, 03}, (Thora){15, 00}, oitava);
 
     //QUARTAS DE FINAL
-    insere_jogo(56, NULL, NULL,"OLÍMPICO LUJNIKI", (Tdata){2018, 07, 06}, (Thora){11, 00}, quarta);
-    insere_jogo(57, NULL, NULL,"ECATERIMBURGO", (Tdata){2018, 07, 06}, (Thora){15, 00}, quarta);
-    insere_jogo(58, NULL, NULL,"OLÍMPICO LUJNIKI", (Tdata){2018, 07, 07}, (Thora){11, 00}, quarta);
-    insere_jogo(59, NULL, NULL,"ECATERIMBURGO", (Tdata){2018, 07, 07}, (Thora){15, 00}, quarta);
+    insere_jogo(56, NULL, NULL, NIZHNY_NOVGOROD, (Tdata){2018, 07, 06}, (Thora){11, 00}, quarta);
+    insere_jogo(57, NULL, NULL, ARENA_KAZAN, (Tdata){2018, 07, 06}, (Thora){15, 00}, quarta);
+    insere_jogo(58, NULL, NULL, OLIMPICO_DE_SOCHI, (Tdata){2018, 07, 07}, (Thora){15, 00}, quarta);
+    insere_jogo(59, NULL, NULL, SAMARA, (Tdata){2018, 07, 07}, (Thora){11, 00}, quarta);
 
     //SEMI-FINAL
-    insere_jogo(60, NULL, NULL,"OLÍMPICO LUJNIKI", (Tdata){2018, 07, 10}, (Thora){15, 00}, semi_final);
-    insere_jogo(61, NULL, NULL,"ECATERIMBURGO", (Tdata){2018, 07, 11}, (Thora){15, 00}, semi_final);
+    insere_jogo(60, NULL, NULL, SAO_PETERSBURGO, (Tdata){2018, 07, 10}, (Thora){15, 00}, semi_final);
+    insere_jogo(61, NULL, NULL, OLIMPICO_LUJNIKI, (Tdata){2018, 07, 11}, (Thora){15, 00}, semi_final);
 
     //DISPUTA PELO TERCEIRO LUGAR
-    insere_jogo(62, NULL, NULL,"ECATERIMBURGO", (Tdata){2018, 07, 14}, (Thora){11, 00}, terc_lugar);
+    insere_jogo(62, NULL, NULL, SAO_PETERSBURGO, (Tdata){2018, 07, 14}, (Thora){11, 00}, terc_lugar);
 
     //FINAL
-    insere_jogo(63, NULL, NULL,"ECATERIMBURGO", (Tdata){2018, 07, 15}, (Thora){12, 00}, final);
+    insere_jogo(63, NULL, NULL, OLIMPICO_LUJNIKI, (Tdata){2018, 07, 15}, (Thora){12, 00}, final);
 
 
 }

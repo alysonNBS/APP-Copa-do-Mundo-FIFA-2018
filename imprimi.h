@@ -8,6 +8,7 @@ void print_semi_finais(struct semi_final *semis);
 void print_final(struct final *final);
 void print_terc_lugar(struct terceiro_lugar *terc_lugar);
 void print_grupo(struct grupo g);
+void print_grupos_e_jogos(struct grupo g, struct jogo *jogos);
 void print_jogo(struct jogo j);
 void logo_app(void);
 void print_data(struct data d);
@@ -219,8 +220,11 @@ void print_jogo(struct jogo j) {
                 (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->sigla)
                 : time_oitava(j.id-48, 1, pais2);
 
-
-                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
+                if(strlen(pais1) == 3)
+                    printf("\n\t%s", pais1);
+                else
+                    printf("\n%s", pais1);
+                printf("  %3s X %3s  %s\n", "", "", pais2);
                 break;
 
             case quarta:
@@ -230,7 +234,11 @@ void print_jogo(struct jogo j) {
                 : time_quarta(j.id-56, 1, pais2);
 
 
-                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
+                if(strlen(pais1) == 3)
+                    printf("\n\t%s", pais1);
+                else
+                    printf("\n%s", pais1);
+                printf("  %3s X %3s  %s\n", "", "", pais2);
                 break;
 
             case semi_final:
@@ -240,7 +248,11 @@ void print_jogo(struct jogo j) {
                 : time_semi(j.id-60, 1, pais2);
 
 
-                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
+                if(strlen(pais1) == 3)
+                    printf("\n\t%s", pais1);
+                else
+                    printf("\n%s", pais1);
+                printf("  %3s X %3s  %s\n", "", "", pais2);
                 break;
 
             case final:
@@ -250,7 +262,11 @@ void print_jogo(struct jogo j) {
                 : time_final(1, pais2);
 
 
-                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
+                if(strlen(pais1) == 3)
+                    printf("\n\t%s", pais1);
+                else
+                    printf("\n%s", pais1);
+                printf("  %3s X %3s  %s\n", "", "", pais2);
                 break;
 
             case terc_lugar:
@@ -260,12 +276,33 @@ void print_jogo(struct jogo j) {
                 : time_terceiro_lugar(1, pais2);
 
 
-                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "",pais2);
+                if(strlen(pais1) == 3)
+                    printf("\n\t%s", pais1);
+                else
+                    printf("\n%s", pais1);
+                printf("  %3s X %3s  %s\n", "", "", pais2);
                 break;
         }
     } else
     {
         printf("\n\t%s  %-3d X %3d  %s\n", j.pais[0]->sigla, j.placar[0], j.placar[1], j.pais[1]->sigla);
+        if(j.penaltes[0] != -1)
+            printf("\t%3s (%-2d) X (%2d)  %3sPenaltes", "", j.penaltes[0], j.penaltes[1], "");
+    }
+}
+
+
+
+void print_grupos_e_jogos(struct grupo g, struct jogo *jogos)
+{
+    int i=0;
+    print_grupo(g);
+
+    for(i=6*(g.g - 'A'); i< 6*(g.g - 'A') + 6; i++)
+    {
+        printf("\n");
+        print_jogo(jogos[i]);
+        printf("\n");
     }
 }
 

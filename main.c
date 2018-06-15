@@ -15,7 +15,7 @@ void menu_principal(void);
 void menu_insercao(void);
 void menu_insercao_fase(void);
 void menu_exibicao(void);
-
+void menu_grupos(void);
 
 
 int main()
@@ -221,7 +221,7 @@ void menu_exibicao(void)
 
         logo_app();
         printf("\t MENU DE EXIB%c%cO \n\n", 128, 199);
-        printf("1 - Exibir Grupos\n");
+        printf("1 - Acessar Grupos\n");
         printf("2 - Exibir Oitavas\n");
         printf("3 - Exibir Quartas\n");
         printf("4 - Exibir Semi-Final\n");
@@ -240,7 +240,7 @@ void menu_exibicao(void)
         {
             case 1:
                 system("cls");
-                print_grupos(Grupo);
+                menu_grupos();
                 system("pause");
                 break;
             
@@ -283,5 +283,66 @@ void menu_exibicao(void)
             }
     } while(opcao != 0);
     
-    printf("\nRetornando ao menu principal!\n");
+    printf("\nRetornando ao Menu Principal!\n");
+}
+
+void menu_grupos(void)
+{
+    int opcao;
+
+    do
+    {
+        system("cls");
+
+        logo_app();
+        printf("\t MENU DE EXIB%c%cO \n\n", 128, 199);
+        printf("1 - Exibir Classifica%c%co\n", 135, 198);
+        printf("2 - Exibir Grupo A\n");
+        printf("3 - Exibir Grupo B\n");
+        printf("4 - Exibir Grupo C\n");
+        printf("5 - Exibir Grupo D\n");
+        printf("6 - Exibir Grupo E\n");
+        printf("7 - Exibir Grupo F\n");
+        printf("8 - Exibir Grupo G\n");
+        printf("9 - Exibir Grupo H\n");
+        printf("0 - Retornar ao Menu Principal\n");
+        printf("\n\n");
+        printf("Escolha uma op%c%co: ", 135, 198);
+
+        
+        leituraDeOpcao:
+        scanf("%d", &opcao);
+
+        
+        switch (opcao)
+        {
+            case 1:
+                system("cls");
+                print_grupos(Grupo);
+                system("pause");
+                break;
+            
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                system("cls");
+                print_grupos_e_jogos(Grupo[opcao-2], Jogo);
+                system("pause");
+                break;
+
+            case 0:
+                break;
+
+            default:
+                printf("\nOp%c%co inv%clida! Tente novamente: ", 135, 198, 160);
+                goto leituraDeOpcao;
+            }
+    } while(opcao != 0);
+    
+    printf("\nRetornando ao Menu de Exibi%c%co!\n", 135, 198);
 }
