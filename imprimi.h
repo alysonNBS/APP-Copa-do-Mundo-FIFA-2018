@@ -220,11 +220,7 @@ void print_jogo(struct jogo j) {
                 (j.pais[1]->nome != NULL) ? strcpy(pais2, j.pais[1]->sigla)
                 : time_oitava(j.id-48, 1, pais2);
 
-                if(strlen(pais1) == 3)
-                    printf("\n\t%s", pais1);
-                else
-                    printf("\n%s", pais1);
-                printf("  %3s X %3s  %s\n", "", "", pais2);
+                printf("\n\t%s  %3s X %3s  %s\n", pais1, "", "", pais2);
                 break;
 
             case quarta:
@@ -295,11 +291,14 @@ void print_jogo(struct jogo j) {
 
 void print_grupos_e_jogos(struct grupo g, struct jogo *jogos)
 {
-    int i=0;
+    int i=0, ctd=0;
     print_grupo(g);
 
-    for(i=6*(g.g - 'A'); i< 6*(g.g - 'A') + 6; i++)
+    for(i=6*(g.g - 'A'); i< 6*(g.g - 'A') + 6; i++, ctd++)
     {
+        if(ctd%2 == 0)
+            printf("\n\t    Rodada %d\n", ctd/2 + 1);
+        
         printf("\n");
         print_jogo(jogos[i]);
         printf("\n");
